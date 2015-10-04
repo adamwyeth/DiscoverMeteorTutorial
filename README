@@ -1,0 +1,25 @@
+This is a reproduction of the tutorial in Discover Meteor
+
+Packages used:
+Accounts-password: meteor add accounts-password
+Accounts-ui: meteor add ian:accounts-ui-bootstrap-3 (instead of default accounts-ui)
+    --Only difference is the styling
+    --include login with {{>loginButtons}} and can even specify styles 
+        with {{> loginButtons align="right"}}
+Audit-Argument_checks: form input validation meteor audit-arguments-check
+    --This barks at us when we do not use check, but we also have to include the
+    check function with meteor add check
+Check: meteor add check, includes the check function for validation
+Bootstrap: meteor add mizzao:bootstrap-3
+Removed autopublish: meteor remove autopublish
+Remove insecure: meteor remove insecure Don't allow insecure submitting!!!
+Routing package: meteor add iron:router
+    --Needed meteor add ejson as well
+Spinner package (for laod screen): meteor add sacha:spin
+Underscore utility function js library: meteor add underscore
+
+To store temporary state information, use a session value
+i.e. Session.set('pageTitle', 'A different title');
+and Session.get('pageTitle') to set and get a variable pageTitle of the session
+
+Use .observe() with third party widgets to define their reactivity

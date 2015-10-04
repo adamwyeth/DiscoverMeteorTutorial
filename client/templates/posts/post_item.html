@@ -2,6 +2,16 @@
 <div class="post">
     <div class="post-content">
         <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-        </div>
-    </div>
+    <p>
+        submitted by {{author}}
+       {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
+       </p>
+   </div>
+    <!--Note we are not passing an id. Luckily meteor is smart enough to look for
+    an _id property in the dataContext of the postPage (a post), which it
+    does have. So it uses that _id property -->
+    <!-- You could also specify a parameter with 
+    {{pathFor 'postPage' someOtherPost}} -->
+    <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
+</div>
 </template>
