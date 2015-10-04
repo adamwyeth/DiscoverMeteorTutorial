@@ -1,5 +1,7 @@
 This is a reproduction of the tutorial in Discover Meteor
 
+Here are some general notes I took, and other notes are scattered throughout the files
+
 Packages used:
 Accounts-password: meteor add accounts-password
 Accounts-ui: meteor add ian:accounts-ui-bootstrap-3 (instead of default accounts-ui)
