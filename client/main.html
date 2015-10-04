@@ -1,0 +1,24 @@
+<!--Let's include some notes: Meteor's templating system is called 'Spacebars'
+Spacebars is HTML with the addition of three things:
+1. 'inclusions': use {{> templateName}} syntax and simply tell Meteor to replace the
+inclusion with the template of the same name
+2. 'Expressions': such as {{title}} either call a property of the current object or 
+return the value of a template helper as defined in the current template's manager
+3. 'blick helpers' are special tags that control the flow of the template such as 
+{{#each}}...{{/each}} or {{#if}}...{{/if}}. -->
+
+<head>
+    <title>Microscope</title>
+</head>
+<body>
+    <div class="container">
+        <header class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Microscope</a>
+        </div>
+        </header>
+        <div id="main" class="row-fluid">
+            {{>postsList}}
+        </div>
+    </div>
+</body>
