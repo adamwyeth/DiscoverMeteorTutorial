@@ -5,17 +5,22 @@ Template.postEdit.events({
         var currentPostId = this._id;
 
         var postProperties = {
+            _id: this._id,
             url: $(e.target).find('[name=url]').val(),
             title: $(e.target).find('[name=title]').val()
         }
 
-        Posts.update(currentPostId, {$set: postProperties}, function(error) {
-            if (error) {
-                //display the error to the user
-                alert(error.reason);
-            } else {
-                Router.go('postPage', {_id: currentPostId});
-            }
+        Meteor.call('postUpdate', postProperties, function(error, result) {
+            if (error) 
+                return alert(error.reason);
+
+            if (result.userNotAllowed)
+                alert('You are not allowed to edit this post');
+
+            if (result.postExists)
+                alert('This link has already been posted');
+
+            Router.go('postPage', {_id: result._id});
         });
     },
 
@@ -23,9 +28,18 @@ Template.postEdit.events({
         e.preventDefault();
 
         if (confirm("Delete this post?")) {
-            var currentPostId = this._id;
-            Posts.remove(currentPostId);
-            Router.go('postsList');
+            var postProperties = {
+                _id: this._id
+            };
+            Meteor.call('postDelete', postProperties, function(error, result) {
+                if (error)
+                    alert(error.reason);
+                if (result.userNOtAllowed)
+                    {
+                        alert('You\'re not allowed to delete this');
+                    }
+                    Router.go('postsList');
+            });
         }
     }
 });
